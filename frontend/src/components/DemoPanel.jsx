@@ -19,7 +19,7 @@ const itemVariants = {
 export default function DemoPanel() {
   const [file, setFile] = useState(null)
   const [language, setLanguage] = useState('English')
-  const [provider, setProvider] = useState('gemma-local')
+  const [provider, setProvider] = useState('gemini')
   const [status, setStatus] = useState('idle') // idle | reading | done | error
   const [errorMsg, setErrorMsg] = useState('')
   const [docResult, setDocResult] = useState(null)
