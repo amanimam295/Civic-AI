@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://civic-ai-jx9a.onrender.com/*"
+      "destination": "https://civic-ai-jx9a.onrender.com/api/:path*"
     }
   ]
 }
