@@ -10,7 +10,7 @@ from app.core.logging import get_logger
 
 logger = get_logger(__name__)
 
-GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent"
+GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent"
 
 class GeminiProvider(AIProvider):
     def __init__(self):
@@ -40,7 +40,7 @@ class GeminiProvider(AIProvider):
         
         async with httpx.AsyncClient(timeout=120.0) as client:
             try:
-                res = await client.post(f"{GEMINI_API_URL}?key={self.api_key}", json=payload)
+                res = await client.post(GEMINI_API_URL,json=payload,headers={"x-goog-api-key": self.api_key},)
                 res.raise_for_status()
                 data = res.json()
                 
