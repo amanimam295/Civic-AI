@@ -40,7 +40,11 @@ class GeminiProvider(AIProvider):
         
         async with httpx.AsyncClient(timeout=120.0) as client:
             try:
-                res = await client.post(GEMINI_API_URL,json=payload,headers={"x-goog-api-key": self.api_key},)
+                res = await client.post(
+                    GEMINI_API_URL,
+                    json=payload,
+                    headers={"x-goog-api-key": self.api_key},
+                )
                 res.raise_for_status()
                 data = res.json()
                 
@@ -78,7 +82,11 @@ class GeminiProvider(AIProvider):
         
         async with httpx.AsyncClient(timeout=120.0) as client:
             try:
-                res = await client.post(f"{GEMINI_API_URL}?key={self.api_key}", json=payload)
+                res = await client.post(
+                    GEMINI_API_URL,
+                    json=payload,
+                    headers={"x-goog-api-key": self.api_key},
+                )
                 res.raise_for_status()
                 data = res.json()
                 return data["candidates"][0]["content"]["parts"][0]["text"]
